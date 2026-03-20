@@ -1,0 +1,47 @@
+# Example configuration committed to GitHub.
+# Copy/rename this file to `config.yaml` for local/private settings (which is gitignored).
+output:
+  composite_markdown_path: "./out/your-book.md"
+  packaging:
+    enabled: true
+    # Primary ebook output (via pandoc)
+    epub_path: "./out/your-book.epub"
+    # Optional Kindle/legacy output (requires Calibre's `ebook-convert` on PATH)
+    mobi_path: "./out/your-book.mobi"
+    # Optional metadata
+    title: "Your Title"
+    author: "Your Name"
+    language: "en"
+    # Optional pandoc extras (relative to repo root or absolute)
+    # metadata_file: "./src/aggregator/metadata.yaml"
+    # css_file: "./src/aggregator/ebook.css"
+
+sources:
+  local_fs:
+    enabled: false
+    roots:
+      - "./"  # repo root; adjust as needed
+    globs:
+      - "notes/**/*.md"
+    exclude_globs:
+      - "**/.venv/**"
+      - "**/node_modules/**"
+
+  web:
+    enabled: true
+    urls:
+      - https://anonymole.com/2026/03/11/pascals-wager-redux/
+
+    # HTML extraction model for WordPress-style pages:
+    # - container_selector: the main content wrapper
+    # - paragraph_selector: blocks within that wrapper to treat as content
+    #   (e.g., <p class="wp-block-paragraph">…</p>)
+    # - exclusion_selector: first element that marks the start of comments
+    #   (everything at or after this element is ignored)
+    container_selector: "div#content.site-content"
+    paragraph_selector: "p.wp-block-paragraph"
+    exclusion_selector: "div.comment-content"
+
+    # Legacy single selector (still honored as a fallback if set)
+    content_selector: null
+
