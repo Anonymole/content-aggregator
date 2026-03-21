@@ -50,6 +50,7 @@ def _gather_sources(cfg: Dict[str, Any], *, base_dir: Path) -> List[SourceItem]:
             container_selector=web_cfg.get("container_selector"),
             paragraph_selector=web_cfg.get("paragraph_selector"),
             exclusion_selector=web_cfg.get("exclusion_selector"),
+            user_agent=web_cfg.get("user_agent") or WebConfig.user_agent,
         )
         gathered.extend(gather_web_sources(wcfg))
 

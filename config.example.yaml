@@ -31,6 +31,9 @@ sources:
     enabled: true
     urls:
       - https://anonymole.com/2026/03/11/pascals-wager-redux/
+    # Optional: override HTTP User-Agent for sites that block default clients.
+    # Example Firefox UA:
+    user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0"
 
     # HTML extraction model for WordPress-style pages:
     # - container_selector: the main content wrapper
